@@ -7,7 +7,7 @@ resource "kubernetes_namespace" "drone" {
 resource "helm_release" "drone_runner" {
   depends_on = [kubernetes_namespace.drone]
 
-  name       = "drone-runner"
+  name       = "drone-runner-kube"
   repository = data.helm_repository.drone.metadata[0].name
   chart      = "drone-runner-kube"
   namespace  = var.kubernetes_drone_namespace
